@@ -13,7 +13,7 @@ Sitemap Generator - это PHP-библиотека для генерации к
 
 Библиотека доступна через **Composer**:
 ```sh
-composer require vendor/sitemap-generator
+composer require scarlet/sitemap-generator
 ```
 
 ## Использование
