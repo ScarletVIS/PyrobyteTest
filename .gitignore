@@ -3,5 +3,5 @@
 Thumbs.db
 
 # Кэш Composer
-/vendor/*
-/composer.lock
+vendor/*
+composer.lock
