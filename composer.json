@@ -1,5 +1,5 @@
 {
-    "name": "vendor/sitemap-generator",
+    "name": "scarlet/sitemap-generator",
     "description": "A library for generating sitemaps in XML, CSV, and JSON formats.",
     "type": "library",
     "autoload": {
