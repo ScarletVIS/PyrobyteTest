@@ -1,0 +1,7 @@
+# Операционные системы
+.DS_Store
+Thumbs.db
+
+# Кэш Composer
+/vendor/
+/composer.lock

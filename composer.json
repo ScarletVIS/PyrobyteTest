@@ -1,0 +1,19 @@
+{
+    "name": "vendor/sitemap-generator",
+    "description": "A library for generating sitemaps in XML, CSV, and JSON formats.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\SitemapGenerator\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
