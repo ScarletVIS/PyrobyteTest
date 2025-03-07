@@ -9,6 +9,7 @@ use Vendor\SitemapGenerator\Exceptions\UnsupportedFormatException;
 use Vendor\SitemapGenerator\Formats\XmlSitemapFormatter;
 use Vendor\SitemapGenerator\Formats\CsvSitemapFormatter;
 use Vendor\SitemapGenerator\Formats\JsonSitemapFormatter;
+use Vendor\SitemapGenerator\Exceptions\DuplicateUrlException;
 
 class SitemapGenerator
 {
@@ -25,7 +26,7 @@ class SitemapGenerator
     public function __construct(string $format, string $filePath)
     {
         $this->filePath = $filePath;
-
+        
         $this->formatter = match ($format) {
             'xml' => new XmlSitemapFormatter(),
             'csv' => new CsvSitemapFormatter(),
@@ -63,11 +64,21 @@ class SitemapGenerator
      */
     private function validate(array $urls): bool
     {
+        $seenUrls = [];
+    
         foreach ($urls as $url) {
             if (!isset($url['loc'], $url['lastmod'], $url['priority'], $url['changefreq'])) {
                 return false;
             }
+    
+            // Проверка на дубли
+            if (in_array($url['loc'], $seenUrls, true)) {
+                throw new DuplicateUrlException("Дублирующийся URL: {$url['loc']}");
+            }
+    
+            $seenUrls[] = $url['loc'];
         }
+    
         return true;
     }
 }
