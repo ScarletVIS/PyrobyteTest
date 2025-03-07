@@ -6,6 +6,7 @@ use Vendor\SitemapGenerator\SitemapGenerator;
 use Vendor\SitemapGenerator\Exceptions\InvalidDataException;
 use Vendor\SitemapGenerator\Exceptions\FileWriteException;
 use Vendor\SitemapGenerator\Exceptions\UnsupportedFormatException;
+use Vendor\SitemapGenerator\Exceptions\DuplicateUrlException;
 
 $urls = [
     [
@@ -25,7 +26,7 @@ $urls = [
         'lastmod' => '2020-12-07',
         'priority' => 0.1,
         'changefreq' => 'weekly'
-    ]
+    ],
 ];
 
 try {
@@ -36,6 +37,6 @@ try {
     $generator->generate($urls);
 
     echo "Карта сайта успешно создана!";
-} catch (InvalidDataException | FileWriteException | UnsupportedFormatException $e) {
+} catch (InvalidDataException | FileWriteException | UnsupportedFormatException | DuplicateUrlException $e) {
     echo "Ошибка: " . $e->getMessage();
 }

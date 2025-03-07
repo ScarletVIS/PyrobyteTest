@@ -26,6 +26,7 @@ use Vendor\SitemapGenerator\SitemapGenerator;
 use Vendor\SitemapGenerator\Exceptions\InvalidDataException;
 use Vendor\SitemapGenerator\Exceptions\FileWriteException;
 use Vendor\SitemapGenerator\Exceptions\UnsupportedFormatException;
+use Vendor\SitemapGenerator\Exceptions\DuplicateUrlException;
 
 $urls = [
     [
@@ -40,9 +41,10 @@ try {
     $generator = new SitemapGenerator('xml', __DIR__ . '/sitemaps/sitemap.xml');
     $generator->generate($urls);
     echo "Карта сайта успешно создана!";
-} catch (InvalidDataException | FileWriteException | UnsupportedFormatException $e) {
+} catch (InvalidDataException | FileWriteException | UnsupportedFormatException | DuplicateUrlException $e) {
     echo "Ошибка: " . $e->getMessage();
 }
+
 ```
 
 ## Тестирование
@@ -65,6 +67,7 @@ sitemap-generator/
 │   │   ├── CsvSitemapFormatter.php
 │   │   ├── JsonSitemapFormatter.php
 │   ├── Exceptions/
+│   │   ├── DuplicateUrlException.php
 │   │   ├── InvalidDataException.php
 │   │   ├── FileWriteException.php
 │   │   ├── UnsupportedFormatException.php
